@@ -34,9 +34,10 @@ def cross_validation(X, y, cv, n_neighbors):
     scores = []
     for i in range(n_neighbors):
         clf = KNeighborsClassifier(i+1)
-        scores.append(np.mean(cross_val_score(clf, X, y, cv=10)))
+        scores.append(np.mean(cross_val_score(clf, X[:150], y[:150], cv=10)))
+        #scores.append(np.mean(cross_val_score(clf, X, y, cv=10)))
 
-    plt.plot(range(1,151), scores)
+    plt.plot(range(1,135), scores)
     plt.xlabel('Value of K for KNN')
     plt.ylabel('Cross-validated accuracy')
     
@@ -47,18 +48,18 @@ if __name__ == "__main__":
     X, y = make_data1(2000)
     X2, y2 = make_data2(2000)
     
-    cross_validation(X,y,10,150)
+    cross_validation(X,y,10,134)
     #cross_validation(X2,y2,10)
     
-    test_and_plot("img_knn/1KNN1",X,y,1)
+    """test_and_plot("img_knn/1KNN1",X,y,1)
     test_and_plot("img_knn/2KNN1",X2,y2,1)
     test_and_plot("img_knn/1KNN5",X,y,5)
     test_and_plot("img_knn/2KNN5",X2,y2,5)
     test_and_plot("img_knn/1KNN10",X,y,10)
     test_and_plot("img_knn/2KNN10",X2,y2,10)
+    test_and_plot("img_knn/1KNN75",X,y,75)
+    test_and_plot("img_knn/2KNN75",X2,y2,75)
     test_and_plot("img_knn/1KNN100",X,y,100)
     test_and_plot("img_knn/2KNN100",X2,y2,100)
     test_and_plot("img_knn/1KNN150",X,y,150)
-    test_and_plot("img_knn/2KNN150",X2,y2,150)
-    test_and_plot("img_knn/1KNN1200",X,y,1200)
-    test_and_plot("img_knn/2KNN1200",X2,y2,1200)
+    test_and_plot("img_knn/2KNN150",X2,y2,150)"""

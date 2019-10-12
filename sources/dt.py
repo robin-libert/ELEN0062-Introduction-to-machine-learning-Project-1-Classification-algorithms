@@ -104,11 +104,11 @@ if __name__ == "__main__":
     
     
     #plot the results
-    test_and_plot("img_dt/1DecisionTree",X,y)
+    """test_and_plot("img_dt/1DecisionTree",X,y)
     test_and_plot("img_dt/2DecisionTree",X2,y2)
     for i in range(4):
         test_and_plot("img_dt/1DecisionTree"+str(2**i),X,y,2**i)
-        test_and_plot("img_dt/2DecisionTree"+str(2**i),X2,y2,2**i)
+        test_and_plot("img_dt/2DecisionTree"+str(2**i),X2,y2,2**i)"""
     
     #print the average test set accuracies over five generations of the datasets along with the standard deviation for each depth.    
     print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')

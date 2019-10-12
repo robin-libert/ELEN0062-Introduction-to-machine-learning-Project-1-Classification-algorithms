@@ -10,7 +10,6 @@ import numpy as np
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import cross_val_score
-import matplotlib.pyplot as plt
 
 from data import make_data1, make_data2
 from plot import plot_boundary
@@ -33,21 +32,19 @@ def cross_validation(X, y, n_neighbors):
         clf = KNeighborsClassifier(i+1)
         cv = cross_val_score(clf, X[:150], y[:150], cv = 10)
         scores.append(np.mean(cv))
-    print(scores)
-    plt.plot(range(1,n_neighbors+1), scores)
-    plt.xlabel('Value of K for KNN')
-    plt.ylabel('Cross-validated accuracy')
+    return scores
     
-    
-
+def optimal_number_of_neighbors(X,y):
+    scores = cross_validation(X,y, 134)
+    return scores.index(max(scores))+1
 
 if __name__ == "__main__":
     X, y = make_data1(2000, 1)
     X2, y2 = make_data2(2000, 1)
     
-    cross_validation(X2,y2, 134)
     
-    """test_and_plot("img_knn/1KNN1",X,y,1)
+    
+    test_and_plot("img_knn/1KNN1",X,y,1)
     test_and_plot("img_knn/2KNN1",X2,y2,1)
     test_and_plot("img_knn/1KNN5",X,y,5)
     test_and_plot("img_knn/2KNN5",X2,y2,5)
@@ -58,4 +55,7 @@ if __name__ == "__main__":
     test_and_plot("img_knn/1KNN100",X,y,100)
     test_and_plot("img_knn/2KNN100",X2,y2,100)
     test_and_plot("img_knn/1KNN150",X,y,150)
-    test_and_plot("img_knn/2KNN150",X2,y2,150)"""
+    test_and_plot("img_knn/2KNN150",X2,y2,150)
+    
+    print("Optimal number of neighbors = ", end='')
+    print(optimal_number_of_neighbors(X2,y2))

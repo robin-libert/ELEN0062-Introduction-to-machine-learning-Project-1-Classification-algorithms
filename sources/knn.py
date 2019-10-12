@@ -31,13 +31,12 @@ def cross_validation(X, y, n_neighbors):
     scores = []
     for i in range(n_neighbors):
         clf = KNeighborsClassifier(i+1)
-        cv = cross_val_score(clf, X, y, cv = 10)
-        print(cv)
+        cv = cross_val_score(clf, X[:150], y[:150], cv = 10)
         scores.append(np.mean(cv))
     print(scores)
-    """plt.plot(range(1,135), scores)
+    plt.plot(range(1,n_neighbors+1), scores)
     plt.xlabel('Value of K for KNN')
-    plt.ylabel('Cross-validated accuracy')"""
+    plt.ylabel('Cross-validated accuracy')
     
     
 
@@ -46,8 +45,7 @@ if __name__ == "__main__":
     X, y = make_data1(2000, 1)
     X2, y2 = make_data2(2000, 1)
     
-    cross_validation(X,y,21)
-    cross_validation(X2,y2, 21)
+    cross_validation(X2,y2, 134)
     
     """test_and_plot("img_knn/1KNN1",X,y,1)
     test_and_plot("img_knn/2KNN1",X2,y2,1)

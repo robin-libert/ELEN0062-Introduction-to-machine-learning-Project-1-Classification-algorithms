@@ -87,7 +87,7 @@ def test_set1_accuracy(max_depth):
 def test_set2_accuracy(max_depth):
     test = []
     for i in range(5):
-        X,y = make_data2(2000)
+        X,y = make_data2(2000,i+1)
         tr, te = score(X, y, max_depth)
         test.append(te)
     

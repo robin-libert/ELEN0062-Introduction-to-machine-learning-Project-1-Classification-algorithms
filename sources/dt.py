@@ -73,27 +73,27 @@ def score(X,y, depth):
     return train_score, test_score
     
 def test_set1_accuracy(max_depth):
-    train = []
+    test = []
     for i in range(5):
         X,y = make_data1(2000)
         tr, te = score(X, y, max_depth)
-        train.append(tr)
+        test.append(te)
     
-    train = np.asarray(train)
-    my_mean = np.mean(train)
-    my_std = np.std(train)
+    test = np.asarray(test)
+    my_mean = np.mean(test)
+    my_std = np.std(test)
     return my_mean, my_std
 
 def test_set2_accuracy(max_depth):
-    train = []
+    test = []
     for i in range(5):
         X,y = make_data2(2000)
         tr, te = score(X, y, max_depth)
-        train.append(tr)
+        test.append(te)
     
-    train = np.asarray(train)
-    my_mean = np.mean(train)
-    my_std = np.std(train)
+    test = np.asarray(test)
+    my_mean = np.mean(test)
+    my_std = np.std(test)
     return my_mean, my_std
         
     
@@ -114,10 +114,10 @@ if __name__ == "__main__":
     print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')
     print(test_set1_accuracy(None))
     print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = None : ", end = '')
-    print(test_set1_accuracy(None)) 
+    print(test_set2_accuracy(None)) 
     for i in range(4):
         print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = "+ str(2**i) + " : ", end = '')
         print(test_set1_accuracy(2**i))
         print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = "+ str(2**i) + " : ", end = '')
-        print(test_set1_accuracy(2**i))
+        print(test_set2_accuracy(2**i))
     

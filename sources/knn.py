@@ -13,6 +13,7 @@ from sklearn.model_selection import cross_val_score
 
 from data import make_data1, make_data2
 from plot import plot_boundary
+import matplotlib.pyplot as plt
 
 
 # (Question 2)
@@ -32,6 +33,10 @@ def cross_validation(X, y, n_neighbors):
         clf = KNeighborsClassifier(i+1)
         cv = cross_val_score(clf, X[:150], y[:150], cv = 10)
         scores.append(np.mean(cv))
+    plt.plot(range(1,n_neighbors+1), scores)
+    plt.xlabel('Value of K for KNN')
+    plt.ylabel('Cross-validated accuracy')
+    plt.savefig("img_knn/cross_validation.pdf")
     return scores
     
 def optimal_number_of_neighbors(X,y):
@@ -58,4 +63,14 @@ if __name__ == "__main__":
     test_and_plot("img_knn/2KNN150",X2,y2,150)
     
     print("Optimal number of neighbors = ", end='')
-    print(optimal_number_of_neighbors(X2,y2))
+    optimal = optimal_number_of_neighbors(X2,y2)
+    print(optimal)
+    
+    X_train = X2[:150]
+    y_train = y2[:150]
+    X_test = X2[-1850:]
+    y_test = y2[-1850:]
+    clf = KNeighborsClassifier(optimal)
+    clf.fit(X_train, y_train)
+    print("Accuracy of the second test set with the optimal number of neighbors = ", end='')
+    print(clf.score(X_test, y_test))

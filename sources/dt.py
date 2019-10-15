@@ -102,7 +102,6 @@ if __name__ == "__main__":
     X, y = make_data1(2000,1)
     X2, y2 = make_data2(2000,1)
     
-    
     #plot the results
     """test_and_plot("img_dt/1DecisionTree",X,y)
     test_and_plot("img_dt/2DecisionTree",X2,y2)
@@ -111,7 +110,7 @@ if __name__ == "__main__":
         test_and_plot("img_dt/2DecisionTree"+str(2**i),X2,y2,2**i)"""
     
     #print the average test set accuracies over five generations of the datasets along with the standard deviation for each depth.    
-    print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')
+    """print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')
     print(test_set1_accuracy(None))
     print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = None : ", end = '')
     print(test_set2_accuracy(None)) 
@@ -119,5 +118,5 @@ if __name__ == "__main__":
         print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = "+ str(2**i) + " : ", end = '')
         print(test_set1_accuracy(2**i))
         print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = "+ str(2**i) + " : ", end = '')
-        print(test_set2_accuracy(2**i))
+        print(test_set2_accuracy(2**i))"""
     

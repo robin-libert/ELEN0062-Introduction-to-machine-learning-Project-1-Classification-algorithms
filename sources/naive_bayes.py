@@ -49,9 +49,6 @@ class GaussianNaiveBayes(BaseEstimator, ClassifierMixin):
         if y.shape[0] != X.shape[0]:
             raise ValueError("The number of samples differs between X and y")
 
-        # ====================
-        # TODO your code here.
-        # ====================
         
         #indexes of y when y = 0 and when y = 1
         y_0 = np.where(y==0)
@@ -83,10 +80,6 @@ class GaussianNaiveBayes(BaseEstimator, ClassifierMixin):
             The predicted classes, or the predict values.
         """
 
-        # ====================
-        # TODO your code here.
-        # ====================
-        
         p_xi_y0 = 1./np.sqrt(2*np.pi*self.var_X[0]**2)*np.exp(-(((X-self.mean_X[0])**2)/(2*self.var_X[0])))
         p_xi_y1 = 1./np.sqrt(2*np.pi*self.var_X[1]**2)*np.exp(-(((X-self.mean_X[1])**2)/(2*self.var_X[1])))
         self.ppredict_y0 = self.p_y[0]*p_xi_y0[:,0]*p_xi_y0[:,1]
@@ -115,9 +108,6 @@ class GaussianNaiveBayes(BaseEstimator, ClassifierMixin):
             by lexicographic order.
         """
 
-        # ====================
-        # TODO your code here.
-        # ====================
         return np.array([self.ppredict_y0,self.ppredict_y1])
 
 if __name__ == "__main__":
@@ -129,8 +119,8 @@ if __name__ == "__main__":
     p = clf.predict(X[-1850:])
     
     clf2 = GaussianNaiveBayes()
-    clf2 = clf.fit(X2[:150],y2[:150])
-    p2 = clf.predict(X2[-1850:])
+    clf2 = clf2.fit(X2[:150],y2[:150])
+    p2 = clf2.predict(X2[-1850:])
     
     print(accuracy_score(y[-1850:], p))
     print(accuracy_score(y2[-1850:], p2))

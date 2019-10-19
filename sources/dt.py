@@ -73,6 +73,7 @@ def score(X,y, depth):
     return train_score, test_score
     
 def test_set1_accuracy(max_depth):
+    """Compute the accuracy of our model with the first data set"""
     test = []
     for i in range(5):
         X,y = make_data1(2000,i+1)
@@ -85,6 +86,7 @@ def test_set1_accuracy(max_depth):
     return my_mean, my_std
 
 def test_set2_accuracy(max_depth):
+    """Compute the accuracy of our model with the second data set"""
     test = []
     for i in range(5):
         X,y = make_data2(2000,i+1)
@@ -102,15 +104,15 @@ if __name__ == "__main__":
     X, y = make_data1(2000,1)
     X2, y2 = make_data2(2000,1)
     
-    #plot the results
-    """test_and_plot("img_dt/1DecisionTree",X,y)
+    #save the results in the folder img_dt
+    test_and_plot("img_dt/1DecisionTree",X,y)
     test_and_plot("img_dt/2DecisionTree",X2,y2)
     for i in range(4):
         test_and_plot("img_dt/1DecisionTree"+str(2**i),X,y,2**i)
-        test_and_plot("img_dt/2DecisionTree"+str(2**i),X2,y2,2**i)"""
+        test_and_plot("img_dt/2DecisionTree"+str(2**i),X2,y2,2**i)
     
     #print the average test set accuracies over five generations of the datasets along with the standard deviation for each depth.    
-    """print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')
+    print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = None : ", end = '')
     print(test_set1_accuracy(None))
     print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = None : ", end = '')
     print(test_set2_accuracy(None)) 
@@ -118,5 +120,5 @@ if __name__ == "__main__":
         print("Mean and standard deviation of 5 random generated set of type 1 with a tree of depth = "+ str(2**i) + " : ", end = '')
         print(test_set1_accuracy(2**i))
         print("Mean and standard deviation of 5 random generated set of type 2 with a tree of depth = "+ str(2**i) + " : ", end = '')
-        print(test_set2_accuracy(2**i))"""
+        print(test_set2_accuracy(2**i))
     
